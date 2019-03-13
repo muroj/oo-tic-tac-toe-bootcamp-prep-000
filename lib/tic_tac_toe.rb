@@ -45,9 +45,7 @@ class TicTacToe
   end
   
   #
-  # Returns true if <index> is a valid position on <board>
-  #
-  # @param <board> - game array
+  # Returns true if <index> is a valid position
   # @param <index> - user input
   #
   def valid_move?(board, index)
