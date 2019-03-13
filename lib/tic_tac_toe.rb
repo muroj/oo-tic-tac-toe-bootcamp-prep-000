@@ -63,7 +63,7 @@ class TicTacToe
   # @param <index> - an integer representing a position on the game board
   #
   def valid_move?(index)
-    return index.between?(0, @board.length) && !position_taken?(@board, index)
+    return index.between?(0, @board.length) && !position_taken?(index)
   end
   
   #
