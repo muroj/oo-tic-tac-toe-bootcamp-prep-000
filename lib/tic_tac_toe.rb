@@ -18,8 +18,6 @@ class TicTacToe
   #
   # Prints the tic-tac-toe board to stdout
   #
-  # @param <board> - game array
-  #
   def display_board()
     puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
     puts "-----------"
