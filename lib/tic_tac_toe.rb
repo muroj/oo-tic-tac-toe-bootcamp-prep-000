@@ -60,12 +60,15 @@ class TicTacToe
   #
   # Returns true if <index> is a valid position
   #
-  # @param <index> - user input
+  # @param <index> - an integer representing a position on the game board
   #
   def valid_move?(index)
     return index.between?(0, @board.length) && !position_taken?(@board, index)
   end
   
+  #
+  # Returns true if <index> is a valid position
+  #
   def turn()
     puts "Please enter 1-9:"
     input = gets.strip
@@ -78,10 +81,13 @@ class TicTacToe
     end
   end
   
-  def turn_count(board)
+  #
+  # Returns the number of turns taken in the current game
+  #
+  def turn_count()
     turns = 0
     
-    board.each do |position|
+    @board.each do |position|
       if position.eql?("X") || position.eql?("O")
         turns += 1
       end
@@ -90,9 +96,12 @@ class TicTacToe
     return turns
   end 
   
-  def current_player(board)
+  #
+  # Returns the current player (next to make a move)
+  #
+  def current_player()
     # Assume player X goes first
-    return turn_count(board) % 2 == 0 ? "X" : "O"
+    return turn_count() % 2 == 0 ? "X" : "O"
   end
   
   # Define your play method below
