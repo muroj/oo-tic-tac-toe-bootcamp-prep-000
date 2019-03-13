@@ -40,9 +40,8 @@ class TicTacToe
   # @param <board> - game array
   # @param <move_position> - index of next move, should be in range 0-8
   # @param <player> - string with value "X" or "O"
-  def move(board, move_position, player)
-    board[move_position] = player
-    return board
+  def move(move_position, player="X")
+    @board[move_position] = player
   end
   
   #
