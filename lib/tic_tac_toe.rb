@@ -59,6 +59,7 @@ class TicTacToe
   
   #
   # Returns true if <index> is a valid position
+  #
   # @param <index> - user input
   #
   def valid_move?(index)
@@ -77,21 +78,6 @@ class TicTacToe
     end
   end
   
-  # Define your play method below
-  def play(board)
-    
-    while !over?(board)
-      turn(board)
-    end
-    
-    if won?(board)
-      puts "Congratulations #{winner(board)}!"
-    elsif draw?(board)
-      puts "Cat's Game!"
-    end
-  
-  end
-  
   def turn_count(board)
     turns = 0
     
@@ -107,6 +93,21 @@ class TicTacToe
   def current_player(board)
     # Assume player X goes first
     return turn_count(board) % 2 == 0 ? "X" : "O"
+  end
+  
+  # Define your play method below
+  def play(board)
+    
+    while !over?(board)
+      turn(board)
+    end
+    
+    if won?(board)
+      puts "Congratulations #{winner(board)}!"
+    elsif draw?(board)
+      puts "Cat's Game!"
+    end
+  
   end
   
   def won?(board)
