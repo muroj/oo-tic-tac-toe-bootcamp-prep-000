@@ -48,8 +48,8 @@ class TicTacToe
   # Returns true if <index> is a valid position
   # @param <index> - user input
   #
-  def valid_move?(board, index)
-    return index.between?(0, board.length) && !position_taken?(board, index)
+  def valid_move?(index)
+    return index.between?(0, @board.length) && !position_taken?(@board, index)
   end
   
   def position_taken?(board, index)
