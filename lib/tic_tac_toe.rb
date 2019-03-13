@@ -104,6 +104,34 @@ class TicTacToe
     return turn_count() % 2 == 0 ? "X" : "O"
   end
   
+  def won?()
+    WIN_COMBINATIONS.each do |winc|
+      if (@board[winc[0]].eql?("X") && @board[winc[1]].eql?("X") && @board[winc[2]].eql?("X")) || (@board[winc[0]].eql?("O") && @board[winc[1]].eql?("O") && @board[winc[2]].eql?("O"))
+        return winc
+      end
+    end
+    return false
+  end 
+  
+  def full?()
+    @board.all? do |position|
+      !(position.nil? || position == " ")
+    end
+  end
+  
+  def draw?()
+    !won?() && full?()
+  end
+  
+  def over?()
+    won?() || draw?()
+  end
+  
+  def winner()
+    win_combo = won?()
+    win_combo ? @board[win_combo[0]] : nil
+  end
+  
   # Define your play method below
   def play(board)
     
@@ -116,35 +144,6 @@ class TicTacToe
     elsif draw?(board)
       puts "Cat's Game!"
     end
-  
-  end
-  
-  def won?(board)
-    WIN_COMBINATIONS.each do |winc|
-      if (board[winc[0]].eql?("X") && board[winc[1]].eql?("X") && board[winc[2]].eql?("X")) || (board[winc[0]].eql?("O") && board[winc[1]].eql?("O") && board[winc[2]].eql?("O"))
-        return winc
-      end
-    end
-    return false
-  end 
-  
-  def full?(board)
-    board.all? do |position|
-      !(position.nil? || position == " ")
-    end
-  end
-  
-  def draw?(board)
-    !won?(board) && full?(board)
-  end
-  
-  def over?(board)
-    won?(board) || draw?(board)
-  end
-  
-  def winner(board)
-    win_combo = won?(board)
-    win_combo ? board[win_combo[0]] : nil
   end
   
 end # End TicTacToe class
