@@ -37,11 +37,24 @@ class TicTacToe
   #
   # Enters the specified <player> into the specified position on the board.
   #
-  # @param <board> - game array
   # @param <move_position> - index of next move, should be in range 0-8
   # @param <player> - string with value "X" or "O"
+  #
   def move(move_position, player="X")
     @board[move_position] = player
+  end
+  
+  #
+  # Determines whether the specified index represents a valid position on the game board
+  #
+  def position_taken?(index)
+    position = @board[index]
+    
+    if !(position.nil? || position.eql?(" ") || position.empty?)
+      return (position.eql?("X") || position.eql?("O"))
+    else
+      return false
+    end
   end
   
   #
@@ -50,16 +63,6 @@ class TicTacToe
   #
   def valid_move?(index)
     return index.between?(0, @board.length) && !position_taken?(@board, index)
-  end
-  
-  def position_taken?(board, index)
-    position = board[index]
-    
-    if !(position.nil? || position.eql?(" ") || position.empty?)
-      return (position.eql?("X") || position.eql?("O"))
-    else
-      return false
-    end
   end
   
   def turn(board)
